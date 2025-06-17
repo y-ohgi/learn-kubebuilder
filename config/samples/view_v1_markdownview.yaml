@@ -1,0 +1,9 @@
+apiVersion: view.y-ohgi.github.io/v1
+kind: MarkdownView
+metadata:
+  labels:
+    app.kubernetes.io/name: learn-kubebuilder
+    app.kubernetes.io/managed-by: kustomize
+  name: markdownview-sample
+spec:
+  # TODO(user): Add fields here
