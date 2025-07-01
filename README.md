@@ -1,8 +1,7 @@
-# learn-kubebuilder
-// TODO(user): Add simple overview of use/purpose
+unused secret detector
+---
 
-## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+未使用のSecretを発見するcontroller
 
 ## Getting Started
 
@@ -11,6 +10,32 @@
 - docker version 17.03+.
 - kubectl version v1.11.3+.
 - Access to a Kubernetes v1.11.3+ cluster.
+
+### How to use
+使用するSecretの作成
+```bash
+$ kubectl create secret generic unused-secret --from-literal=key1=value1 --from-literal=key2=value2
+$ kubectl create secret generic used-secret --from-literal=username=admin --from-literal=password=secret123
+```
+
+```bash
+$ kubectl apply -f test-pod.yaml
+```
+
+helmのinstall
+```bash
+$ helm uninstall learn-kubebuilder dist/chart/ --namespace learn-kubebuilder-system --create-namespace
+```
+
+### Helm Chartの作成
+ref: [helm/v1-alpha - The Kubebuilder Book](https://book.kubebuilder.io/plugins/available/helm-v1-alpha)
+```bash
+$ make manifets
+$ kubebuilder edit --plugins=helm/v1-alpha
+```
+
+`chart/Chart.yaml` , `chart/templates/_helpers.tpl` は `chart/.helmignore` を削除しない限り更新されない点に注意
+
 
 ### To Deploy on the cluster
 **Build and push your image to the location specified by `IMG`:**
