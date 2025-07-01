@@ -6,6 +6,8 @@ cliVersion: 4.6.0
 domain: y-ohgi.github.io
 layout:
 - go.kubebuilder.io/v4
+plugins:
+  helm.kubebuilder.io/v1-alpha: {}
 projectName: learn-kubebuilder
 repo: github.com/y-ohgi/learn-kubebuilder
 resources:
